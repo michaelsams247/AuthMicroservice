@@ -1,7 +1,7 @@
 # AuthMicroservice
 
 ## Overview
-This microservice recieves a username and password and checks if those are in a local CSV file. It will then send back True or False if the credentials match the CSV file. 
+This microservice recieves a username and password and checks a CSV file called users.csv that is located in the same directory. It will then send back True or False if the credentials match the CSV file. 
 
 This microservice will communicate through socket 21219 using ZeroMQ.
 
