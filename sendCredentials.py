@@ -1,18 +1,14 @@
 import zmq
 
-email = 'Email: Michaelsams24@gmail.com'
-password = 'Password: Testing123'
+email = 'TEST_USER'
+password = 'TEST_PASSWORD'
+sendString = '/'.join([email, password])
 
 context = zmq.Context()
 socket = context.socket(zmq.REQ)
 socket.connect("tcp://localhost:21219")
-
-socket.send_string(email)
-socket.recv()
-socket.send_string(password)
-
+socket.send_string(sendString)
 
 response = socket.recv().decode()
 print(response)
-if response != "Failed":
-    pass
+    

@@ -1,34 +1,26 @@
 import zmq
-import csv
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:21219")
 
-email= None
+userName= None
 password = None
 
 while True:
     message = socket.recv().decode()
-
-    if message[:5] == 'Email':
-        email = message[7:]
-    elif message[:8]:
-        password = message[10:]
-
-    if email is not None and password is not None:
-
-        with open('credentials.csv', mode ='r') as file:
-            data = csv.reader(file)
-            for line in data:
-                pass
-            
-
-            
-        socket.send_string('True')
-        email = None
-        password = None
-    else:
-        socket.send_string('')
+    userName, password = message.split('/')
+    valid = False
+    with open('./users.csv', mode ='r') as file:
+        lines = file.readlines()[1:]
+        for line in lines:
+            lineData = line[:-1].split(',')
+            if lineData[0] == userName and lineData[1] == password:
+                valid = True
+                break
+    
+    socket.send_string(str(valid))
+    userName, password = None, None
+    
 
 
