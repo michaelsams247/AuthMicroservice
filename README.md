@@ -36,5 +36,5 @@ response = 'False' # if credentials are not correct
 
 
 ## UML Sequence
-![UML_Sequence](https://github.com/user-attachments/assets/e6b3acb2-06ca-47bf-a5ad-0aac4b055c26)
+![UML_Sequence](https://github.com/user-attachments/assets/9642f29d-7362-4db2-80d9-765f27573ce5)
 
